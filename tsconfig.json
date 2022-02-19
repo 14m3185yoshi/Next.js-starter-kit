@@ -1,20 +1,29 @@
 {
+  // NOTE: Doc(https://www.typescriptlang.org/tsconfig#noEmit)
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "es5", // ECMAScript target versionを指定
+    "allowJs": true, //JSファイルのビルドを可能に
+    "noImplicitAny": false, //暗黙のany型をエラーに
+    "skipLibCheck": true, //型宣言ファイルの型チェックをスキップする
+    "strict": true, //厳密な型チェックオプションを有効に
+    "forceConsistentCasingInFileNames": true, //大文字小文字を区別して参照を解決するようにする
     "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true
+    "esModuleInterop": true, // CommonJSモジュールとESモジュール間の相互運用性を,すべてのインポート用に名前空間オブジェクトを作成することで可能に
+    "module": "esnext", //生成されるモジュールコードを指定
+    "moduleResolution": "node", //モジュール解決戦略を指定する: 'node'（Node.js）または 'classic'
+    "resolveJsonModule": true, //自分で型定義を行う必要なく json ファイルを扱うことを可能に
+    "isolatedModules": true, // //各々のファイルを別のモジュールとして変換
+    "jsx": "preserve", //tsx拡張子においてJSXサポートを行うか
+    "types": ["jest"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@components/*": ["src/components/*"],
+      "@store/*": ["src/store/*"]
+    },
+    "incremental": true,
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".next", "out"], // 継承元の別の構成ファイルへのパスを含む文字列(ex. はNode.jsスタイルの解決)
+  "include": ["./global-types.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.mjs"]
 }
