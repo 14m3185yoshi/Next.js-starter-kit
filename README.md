@@ -138,31 +138,6 @@ figma アプリの右上の Share ボタンをクリックした後、出現す�
 
 ![image](https://user-images.githubusercontent.com/49422601/151144619-06e0c978-3423-4db0-9a98-54feb7f083c6.png)
 
-```tsx
-export default {
-  title: 'Atoms/Sample',
-  component: Sample,
-  decorators: [withDesign]
-} as ComponentMeta<typeof Input>;
-
-const Template: ComponentStory<typeof Input> = (args: Props) => <Input {...args} />;
-
-export const SimpleInput = Template.bind({});
-
-SimpleInput.args = {
-  value: '値',
-  type: 'text',
-  placeholder: '値入力'
-};
-
-SimpleInput.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/Db6UcdyXxHEEP6tGIjZhFb/Scheeme-finance-super-app---UI-Kit_saka-edit?node-id=2665%3A26079'
-  }
-};
-```
-
 <br/>
 
 ## 7. テストについて
@@ -196,10 +171,11 @@ $ yarn cy:run
 - Redux <br/>
 
 **Integration テスト(コンポーネント)** <br>
-下記理由のためIntegrationテストは不必要と考えています。
-- 基本的にロジックはpagesに書く方針のため、E2Eテストと重複
-- Atoms等についてはMUIをラップしてるいるため、テストを書く必要性が少ない。
-<br/>
+下記理由のため Integration テストは不必要と考えています。
+
+- 基本的にロジックは pages に書く方針のため、E2E テストと重複
+- Atoms 等については MUI をラップしてるいるため、テストを書く必要性が少ない。
+  <br/>
 
 **E2E テスト**
 
