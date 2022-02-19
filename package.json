@@ -5,7 +5,7 @@
     "node": "16.13.2"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 7777 ",
     "build": "next build",
     "start": "next start",
     "lint": "eslint **/*.{ts,tsx}",
